@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
+import Form from './Form'
 
 const PetForm = (props) => {
     const [formInfo, setFormInfo] = useState({
@@ -48,35 +49,9 @@ const PetForm = (props) => {
                 <Link to='/' className="btn btn-info btn-outline-dark" style={{color: "white"}}>back to home</Link>
             </div>
             <div className="mt-2 border border-dark">
-                <form className="d-flex justify-content-between" onSubmit={submitHandler} >
-                    <div className="pl-2 pb-2">
-                        <div>
-                            <label htmlFor="name">Pet Name:</label><br />
-                            <input type="text" name="name" onChange={changeHandler} /><br />
-                        </div>
-                        <p className="text-danger">{errors.name?.message}</p>
-                        <div>
-                            <label htmlFor="type">Pet Type:</label><br />
-                            <input type="text" name="type" onChange={changeHandler} /><br />
-                        </div>
-                        <p className="text-danger">{errors.type?.message}</p>
-                        <div>
-                            <label htmlFor="description">Pet Description:</label><br />
-                            <input type="text" name="description" onChange={changeHandler} /><br /><br />
-                        </div>
-                        <p className="text-danger">{errors.description?.message}</p>
-                        <input type="submit" style={{color: "white"}} className="btn btn-dark btn-outline-info" value="Add Pet" />
-                    </div>
-                    <div className="pr-2 pb-3">
-                        <p>Skills (optional):</p>
-                        <label htmlFor="skill1">Skill 1:</label><br />
-                        <input type="text" name="skill1" onChange={changeHandler} /><br />
-                        <label htmlFor="skill2">Skill 2:</label><br />
-                        <input type="text" name="skill2" onChange={changeHandler} /><br />
-                        <label htmlFor="skill3">Skill 3:</label><br />
-                        <input type="text" name="skill3" onChange={changeHandler} />
-                    </div>
-                </form>
+                <Form changeHandler={changeHandler} submitHandler={submitHandler} formInfo={formInfo} errors={errors} buttonValue="Add Pet">
+
+                </Form>
             </div>
         
         </>
