@@ -13,5 +13,6 @@ require('./server/config/mongoose.config'); // importing config file
 
 // routes - need to pass in (app) here
 require('./server/routes/pet.routes')(app);
+require('./server/routes/shelter.routes')(app);
 
 app.listen(port, ()=>console.log(`listening on port ${port}`));

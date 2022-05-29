@@ -22,6 +22,18 @@ module.exports.findAllPets = (req, res) => {
         })
 }
 
+module.exports.findPetsAtShelter = (req, res) => {
+    // req.params.<> == whatever you named <> in the route
+    Pet.find({shelter_id: req.params.shelterID})
+    .populate('shelter_id')
+    .then(allPets => {
+        res.json({results: allPets})
+    })
+    .catch(err => {
+        res.json({msg: 'Something went wrong', error: err})
+    })
+}
+
 // find a random Pet
 /* module.exports.findRandomPet = (req, res) => {
     // .exec() is just saying execute a function after .count()

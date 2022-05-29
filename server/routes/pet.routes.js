@@ -9,5 +9,7 @@ module.exports = app => {
     app.get('/api/pets/:id', PetController.findOnePet);
     app.put('/api/pets/:id', PetController.updatePet);
     app.delete('/api/pets/:id', PetController.deletePet);
+    // show all pets that belong to a shelter, given a shelter_id
+    app.get('/api/pets/shelter/:shelterID', PetController.findPetsAtShelter);
 
 }
